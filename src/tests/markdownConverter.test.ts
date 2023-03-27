@@ -1,3 +1,5 @@
+import {markdownConverter} from '../core/markdownConverter';
+
 // [] - '' -> ''
 // [] - 'Random text' -> 'Random text'
 // [] - '[Google](https://www.google.es)' -> 'Google [^anchor1]\n\n[^anchor1]: https://www.google.es'
