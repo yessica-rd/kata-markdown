@@ -6,9 +6,13 @@ export const markdownConverter = (markdownText: string) => {
     const linkText = `${markdownTextMatch[1]} [^anchor1]`;
     const footer = `\n\n[^anchor1]: ${markdownTextMatch[2]}`;
     const markdownTextBeforeLink = markdownText.substring(0, markdownTextMatch.index);
+    const markdownTextAfterLink = markdownText.substring(markdownTextMatch.index + markdownTextMatch[0].length);
 
     if(markdownTextBeforeLink) {
       return `${markdownTextBeforeLink}${linkText}${footer}`;
+    }
+    if(markdownTextAfterLink) {
+      return `${linkText}${markdownTextAfterLink}${footer}`;
     }
     return `${linkText}${footer}`;
   }
