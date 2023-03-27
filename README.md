@@ -1,6 +1,16 @@
-# Base template only with TypeScript
-You can use it for Coding-Dojos, Katas or reference to build a new project.
 
-This template includes:
+## Run project
+Install project dependencies:
 
-💬 TypeScript 4.0.5
+`
+npm install
+`
+
+To run all test in watch mode, run next command:
+
+`
+npm run test:watch
+`
+
+## Install Jest
+npm i -D jest ts-jest @types/jest
