@@ -30,4 +30,9 @@ describe('Markdown converter kata', () => {
     const expectedText = 'Google [^anchor1] random text after\n\n[^anchor1]: https://www.google.es';
     expect(markdownConverter(givenText)).toBe(expectedText);
   });
+  it('provided link between text string creates anchor and footer after', () => {
+    const givenText = 'random text before [Google](https://www.google.es) random text after';
+    const expectedText = 'random text before Google [^anchor1] random text after\n\n[^anchor1]: https://www.google.es'
+    expect(markdownConverter(givenText)).toBe(expectedText)
+  });
 });
