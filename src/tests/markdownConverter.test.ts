@@ -35,4 +35,9 @@ describe('Markdown converter kata', () => {
     const expectedText = 'random text before Google [^anchor1] random text after\n\n[^anchor1]: https://www.google.es';
     expect(markdownConverter(givenText)).toBe(expectedText);
   });
+  it('multiple links are converted', () => {
+    const givenText = '[Google](https://www.google.es)[Github](https://github.com)';
+    const expectedText = 'Google [^anchor1] Github [^anchor2]\n\n[^anchor1]: https://www.google.es\n\n[^anchor2]: https://github.com';
+    expect(markdownConverter(givenText)).toBe(expectedText);
+  });
 });
