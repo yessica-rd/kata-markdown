@@ -9,7 +9,10 @@ import {markdownConverter} from '../core/markdownConverter';
 // [] - '[Google](https://www.google.es)[Github](https://github.com)' -> 'Google [^anchor1] Github [^anchor2]\n\n[^anchor1]: https://www.google.es\n\n[^anchor2]: https://github.com'
 // [] - '[Google](https://www.google.es), [Github](https://github.com)', 'Google [^anchor1], Github [^anchor2]\n\n[^anchor1]: https://www.google.es\n\n[^anchor2]: https://github.com']
 describe('Markdown converter kata', () => {
-  it('Red: empty text is allowed', () => {
-    expect(markdownConverter('')).toBe('')
-});
+  it('empty text is allowed', () => {
+    expect(markdownConverter('')).toBe('');
+  });
+  it('regular text is allowed', () => {
+    expect(markdownConverter('Random text')).toBe('Random text');
+  });
 });
