@@ -1,7 +1,7 @@
 import {markdownConverter} from '../core/markdownConverter';
 
-// [] - '' -> ''
-// [] - 'Random text' -> 'Random text'
+// [x] - '' -> ''
+// [x] - 'Random text' -> 'Random text'
 // [] - '[Google](https://www.google.es)' -> 'Google [^anchor1]\n\n[^anchor1]: https://www.google.es'
 // [] - 'Random text before [Google](https://www.google.es)' -> 'Random text before Google [^anchor1]\n\n[^anchor1]: https://www.google.es'
 // [] - '[Google](https://www.google.es) random text after' -> 'Google [^anchor1] random text after\n\n[^anchor1]: https://www.google.es'
@@ -14,5 +14,10 @@ describe('Markdown converter kata', () => {
   });
   it('regular text is allowed', () => {
     expect(markdownConverter('Random text')).toBe('Random text');
+  });
+  it('provided link creates anchor and footer', () => {
+    const givenText = '[Google](https://www.google.es)';
+    const expectedText = 'Google [^anchor1]\n\n[^anchor1]: https://www.google.es'
+    expect(markdownConverter(givenText)).toBe(expectedText)
   });
 });
