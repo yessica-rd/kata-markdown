@@ -38,29 +38,4 @@ export const markdownConverter = (markdownText: string) => {
     markdownTextMatch = anchorsRegex.exec(markdownText);
   }
   return `${result.join('')}\n\n${footerAnchors.join('\n\n')}`;
-
-
-
-
-
-
-  
-  // if(markdownTextmarkdownTextMatch) {
-  //   const linkText = `${markdownTextmarkdownTextMatch[1]} [^anchor1]`;
-  //   const footer = `\n\n[^anchor1]: ${markdownTextmarkdownTextMatch[2]}`;
-  //   const markdownTextBeforeLink = markdownText.substring(0, markdownTextmarkdownTextMatch.index);
-  //   const markdownTextAfterLink = markdownText.substring(markdownTextmarkdownTextMatch.index + markdownTextmarkdownTextMatch[0].length);
-
-  //   if(markdownTextBeforeLink && markdownTextAfterLink) {
-  //     return `${markdownTextBeforeLink}${linkText}${markdownTextAfterLink}${footer}`;
-  //   }
-  //   if(markdownTextBeforeLink) {
-  //     return `${markdownTextBeforeLink}${linkText}${footer}`;
-  //   }
-  //   if(markdownTextAfterLink) {
-  //     return `${linkText}${markdownTextAfterLink}${footer}`;
-  //   }
-  //   return `${linkText}${footer}`;
-  // }
-  // return markdownText;
 }
