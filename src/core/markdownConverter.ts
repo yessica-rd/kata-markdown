@@ -20,20 +20,26 @@ export const markdownConverter = (markdownText: string) => {
     const anchorName = `[^anchor${anchorCounter}]`;
     const anchorFooterUrl = `${anchorName}: ${anchorUrl}`;
     const isLastAnchor = anchorCounter === numberOfReferences;
+    const currentAnchorExists = footerAnchors.some(footerAnchor => footerAnchor.includes(anchorUrl));
     const newTextLink = `${linkText} ${anchorName}${isLastAnchor ? '' : ' '}`;
     
     const markdownTextBeforeLink = newText.slice(0, startIndex);
     if(markdownTextBeforeLink) {
       result.push(markdownTextBeforeLink)
     }
-    result.push(newTextLink)
+    if(!currentAnchorExists) {
+      result.push(newTextLink)
+      footerAnchors.push(anchorFooterUrl);
+      anchorCounter ++;
+    }
+    if(currentAnchorExists && isLastAnchor) {
+      result[result.length - 1] = result[result.length - 1].trim();
+    }
     if(isLastAnchor) {
       const markdownTextAfterLink = newText.slice(endIndex)
       result.push(markdownTextAfterLink);
     }
     newText = newText.substring(endIndex)
-    footerAnchors.push(anchorFooterUrl);
-    anchorCounter ++;
 
     markdownTextMatch = anchorsRegex.exec(markdownText);
   }
